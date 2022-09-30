@@ -1,10 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
+const [userLogin, setUserLogin] = useState("")
+
 function App() {
 
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    findCurrentUser(userLogin)
+  }
+  const handleChange = e => {
+    setUserLogin(e.target.value)
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
