@@ -1,13 +1,89 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: #a5ada7;
+  font-family: 'superhelio _regular', sans-serif;
+}
+h2{
+  font-family: 'seriousr4b', sans-serif;
+  @apply text-3xl p-5 block
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+
+.App{
+  @apply italic text-center
+}
+
+
+
+#column-table{
+  @apply inline-flex max-h-full bg-white
+}
+
+
+
+#left-column{
+  @apply basis-1/4
+}
+#mascot-btn {
+  @apply m-5
+}
+#misc-box-total{
+  background-color: #717872;
+  border:3px black solid;
+  @apply m-5
+}
+#misc-box-navbar{
+  /* @apply inline-flex */
+}
+.misc-box-btn{
+  font-family: 'seriousr4b', sans-serif;
+  border:2px black solid;
+  overflow:hidden;
+  @apply w-6/12 py-5 inline
+}
+#tutorial-content{
+  width: 300px;
+  height: 100px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+
+
+#game-column{
+  @apply basis-1/2
+}
+#game-box {
+  background-color: #717872;
+  @apply m-5 max-h-max
+}
+
+
+
+#right-column{
+  @apply basis-1/4
+}
+#coin-box {
+  background-color: #717872;
+  @apply m-5
+}
+#shop-box{
+  background-color: #717872;
+  @apply m-5
+}
+
+
+
+#credit-box {
+  @apply m-5 items-center flex
+}
+#credit-content{
+  background-color: #717872;
+  @apply basis-1/3 text-center mx-auto
 }
