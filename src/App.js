@@ -1,18 +1,38 @@
-import React, { useState } from 'react'
-import { Route } from "react-router-dom";
-
+import React, { useState, useEffect } from 'react'
+import { Switch, Route } from "react-router-dom";
 import Login from "./Login.js"
-import './App.css';
+import Home from "./Home.js"
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState(null)
+    const [currentFarmer, setCurrentFarmer] = useState(null)
+  
+    const changeFarmer = (farmer) => {
+      setCurrentFarmer(farmer)
+    }
+  return (
+    <Switch>
+   <Route exact path="/">
+      <Home />
+   </Route>
 
-  const changeUser = (user) => {
-    setCurrentUser(user)
+   <Route exact path="/login">
+       <Login changeFarmer={changeFarmer}/>
+   </Route>
+   </Switch>
+  )
   }
-return (
- <Route exact path="/login">
-     <Login changeUser={changeUser}/>
- </Route>
-)
-}
+  // const [farmers, setFarmers] = useState([]);
+  //   useEffect(() => {
+  //     fetch("http://localhost:9292/farmers")
+  //       .then((r) => r.json())
+  //       .then((farmers) => setFarmers(farmers));
+  //   }, []);
+  
+  //   return (
+  //     <section>
+  //       {farmers.map((farmer) => (
+  //         <Login key={farmer.id} currentFarmer={farmer} />
+  //       ))}
+  //     </section>
+  //   );
+  // }
