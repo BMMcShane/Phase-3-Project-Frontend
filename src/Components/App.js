@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Game from "./Game"
 import Mascot from "./Mascot";
 import MiscBox from "./MiscBox";
-import Plantopedia from "./Plantopedia";
+import Shop from "./Shop";
 import Coins from "./Coins";
 import Credits from "./Credits";
 
@@ -44,11 +44,7 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
 
       <div id="right-column">
         <Coins />
-        <Plantopedia 
-        hasLoggedIn={hasLoggedIn}
-        currentUser={currentUser}
-        plantList={plantList}
-        />
+        <Shop />
       </div>
       </div>
       <br />

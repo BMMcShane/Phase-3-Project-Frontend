@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import GameDetails from "./GameDetails";
-import Plantopedia from "./Plantopedia";
+// import Plantopedia from "./Plantopedia";
 import Login from "./Login"
 import {v4 as uuid} from "uuid";
 
-export default function Game({ onAddUser, onCurrentUser, currentUser, onAddUserPlants, plantList, hasLoggedIn, onHasLoggedIn }) {
+export default function Game({ onAddUser, onCurrentUser, currentUser, onAddUserPlants, hasLoggedIn, onHasLoggedIn }) {
 
     // const thisUser = currentUser.id
     const thisUserUsername = currentUser.username
 
+    let plantList 
+
     useEffect(() => {
-        fetch(`http://localhost:9292/${currentUser}/plants}`)
+        fetch(`http://localhost:9292/plants`)
             .then(res => res.json())
             .then(plantList)
       }, []);
@@ -35,16 +37,16 @@ return (
         <div>
             <h1>Welcome, {thisUserUsername}!</h1>
             <p>Browse and purchase new plants to add to your collection</p>
-            <Plantopedia
+{/* 
                 //onCityFormatSet={(formattedCity) => setCityFormatted(formattedCity)}
                 // onPlantUpgrade={(plantopediaPlant) => handleNewPlant(plantopediaPlant)}
-            />
-            <h1>Your Plants:</h1>
-            {plantList.map((eachPlant) => 
-                <div key={uuid()}>
+   */}
+            {/* <h1>Your Plants:</h1> */}
+            {/* {plantList.map((eachPlant) => 
+                <div key={id()}>
                     <p>{eachPlant}</p>
                 </div>
-            )}
+            )} */}
         </div>
         : 
         <div> 
