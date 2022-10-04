@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Shop({onPlantUpgrade}) {
 
+    const [plantIsValid, setPlantIsValid] = useState(true)
+
     function handleFreshPlant(e) {
         e.preventDefault()
-
+        
 
      
         }

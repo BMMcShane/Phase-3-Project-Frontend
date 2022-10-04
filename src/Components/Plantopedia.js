@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Shop from "./Shop"
 import PlantCard from "./PlantCard";
-import {v4 as uuid} from "uuid";
-
-export default function Plantopedia({ plantList }){
-
-    const [ allPlantData, setAllPlantData ] = useState([])
-
-    if (plantList) {
-        plantList.map((eachPlant) => {
-        
-                fetch(`http://localhost:9292/plants/${eachPlant}`)
-                .then(res => res.json())
-                .then(data => setAllPlantData(allPlantData=>[...allPlantData, data]))
-            },[])
-    }
 
 
+
+export default function Plantopedia({ hasLoggedIn, plantList }){
+
+    // fetch plants 
+    
+
+    
     return (
         <div>
             <h4> I am Plantopedia </h4>
             <p> Hear me roar.</p>
-            <Shop />
+
 
             <React.Fragment>
         <div>
         <div className="plant-list">
-        {plantList.length >= 1 ? 
-            allPlantData.map((eachPlant) =>
+        {hasLoggedIn ? 
+         
+         <Shop /> :
+
+         
+           plantList.map((eachPlant) =>
                 <PlantCard
-                    key={uuid()}
+                    key={plantList.id}
                     details={eachPlant}
                 />
-            ) : 
-            <h3 className="login-message"><em>You'll need to sign up in order to create a farm of your own!</em></h3>
+            )
+            
+
+            
         }
+
+        
         </div>
         <br />
 

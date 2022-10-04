@@ -16,12 +16,6 @@ const [ plantList, setPlantList ] = useState([]);
 
 const [hasLoggedIn, setHasLoggedIn] = useState(false)
 
-// fetch plants 
-useEffect(() => {
-  fetch("http://localhost:9292/plants")
-      .then(res => res.json())
-      .then(plantList)
-}, []);
 
 
   return (
@@ -51,6 +45,7 @@ useEffect(() => {
       <div id="right-column">
         <Coins />
         <Plantopedia 
+        hasLoggedIn={hasLoggedIn}
         currentUser={currentUser}
         plantList={plantList}
         />

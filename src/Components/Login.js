@@ -3,9 +3,8 @@ import React, { useState } from "react";
 
 export default function Login({onAddUser, onCurrentUser, onHasLoggedIn}){
 
-    const [farmers, setFarmers] = useState([]);
-    const timestamp = Date.now();
-    const loggedInTime = console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp));
+    // const timestamp = Date.now();
+    // const loggedInTime = console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp));
 
 
     const [ userData, setUserData ] = useState({
@@ -13,6 +12,7 @@ export default function Login({onAddUser, onCurrentUser, onHasLoggedIn}){
         date: '',
         username: '',
         password: '',
+        plants: '',
       });
     
       const [ loginError, setLoginError] = useState(null)
@@ -32,7 +32,8 @@ export default function Login({onAddUser, onCurrentUser, onHasLoggedIn}){
           coins: 100,
           date: Date.now(),
           username: userData.username,
-          password: userData.password
+          password: userData.password,
+          plants: []
         }
 
         e.target.reset();

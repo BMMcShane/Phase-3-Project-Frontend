@@ -79,6 +79,10 @@ h2{
   background-color: #717872;
   @apply m-5
 }
+#card-box{
+  background-color: #717872;
+  @apply m-5
+}
 
 
 
