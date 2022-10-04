@@ -11,7 +11,7 @@ export default function Plantopedia(){
     const [currentPlant, setCurrentPlant] = useState({});
     const [ plantList, setPlantList] = useState({});
 
-    const selectedPlant = 7
+    const selectedPlant = 1
     
 
     useEffect(() => {
