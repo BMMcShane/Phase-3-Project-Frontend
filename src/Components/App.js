@@ -1,13 +1,29 @@
-import React from "react";
-import Login from "./Login";
+import React, { useState, useEffect } from "react";
+import Game from "./Game"
 import Mascot from "./Mascot";
 import MiscBox from "./MiscBox";
-import Shop from "./Shop";
+import Plantopedia from "./Plantopedia";
 import Coins from "./Coins";
 import Credits from "./Credits";
 
 
 function App() {
+
+
+const [ users, setUsers ] = useState([]);
+const [currentUser, setCurrentUser ] = useState('')
+const [ plantList, setPlantList ] = useState([]);
+
+const [hasLoggedIn, setHasLoggedIn] = useState(false)
+
+// fetch plants 
+useEffect(() => {
+  fetch("http://localhost:9292/plants")
+      .then(res => res.json())
+      .then(plantList)
+}, []);
+
+
   return (
     <div className="App">
       <br/>
@@ -19,12 +35,25 @@ function App() {
       </div>
 
       <div id="game-column">
-        <Login />
+        <Game
+        onAddUser={(newUser)=>setUsers([...users, newUser])}
+        onCurrentUser={(newUser)=>setCurrentUser(newUser)}
+        currentUser={currentUser}
+        onAddUserPlants={(freshPlant)=>setPlantList([...plantList, freshPlant])}
+        plantList={plantList}
+        onHasLoggedIn={() => setHasLoggedIn(true)}
+        hasLoggedIn={hasLoggedIn}
+        />
+      
+      
       </div>
 
       <div id="right-column">
         <Coins />
-        <Shop />
+        <Plantopedia 
+        currentUser={currentUser}
+        plantList={plantList}
+        />
       </div>
       </div>
       <br />
