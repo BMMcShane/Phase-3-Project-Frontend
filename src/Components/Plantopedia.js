@@ -11,11 +11,14 @@ export default function Plantopedia(){
     const [currentPlant, setCurrentPlant] = useState({});
     const [ plantList, setPlantList] = useState({});
 
+    const selectedPlant = 7
+    
 
     useEffect(() => {
-      fetch(`http://localhost:9292/plants`)
+      fetch(`http://localhost:9292/plants/${selectedPlant}`)
           .then(res => res.json())
           .then(setPlantList)
+          console.log(plantList)
     }, [currentPlant]);
 
 
@@ -27,7 +30,7 @@ export default function Plantopedia(){
             <PlantList onHandleCurrentPlant={(selectedPlant) => setCurrentPlant(selectedPlant)} />
 
         
-            <PlantCard details={plantList}/>
+            <PlantCard details={plantList} selectedPlant={selectedPlant}/>
                
        
         </div>
