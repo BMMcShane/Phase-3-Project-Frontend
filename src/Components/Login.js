@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 
 
-export default function Login({onAddUser, onCurrentUser, onHasLoggedIn}){
+export default function Login({onCurrentUser, setCurrentUser, onHasLoggedIn}){
 
     // const timestamp = Date.now();
     // const loggedInTime = console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp));
 
 
     const [ userData, setUserData ] = useState({
-        coins: '',
-        date: '',
         username: '',
         password: '',
-        plants: '',
       });
     
       const [ loginError, setLoginError] = useState(null)
@@ -29,11 +26,8 @@ export default function Login({onAddUser, onCurrentUser, onHasLoggedIn}){
         e.preventDefault();
     
         const newUser = {
-          coins: 100,
-          date: Date.now(),
           username: userData.username,
           password: userData.password,
-          plants: []
         }
 
         e.target.reset();
@@ -49,14 +43,14 @@ export default function Login({onAddUser, onCurrentUser, onHasLoggedIn}){
     })
       .then((r) => r.json())
       .then((newUser) => {
-        onAddUser(newUser)
-        setLoginError(false)
+        setCurrentUser(newUser)
+        setLoginError(true)
         onHasLoggedIn()
       })
       .catch(() => {
-        console.log('ahhhhh we have an error!')
-        setLoginError(true)
-        console.log(loginError)
+        console.log('login credentials')
+        setLoginError(false)
+        console.log(newUser)
       });
     }
     

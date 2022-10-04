@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GameDetails from "./GameDetails";
 import Login from "./Login"
 import {v4 as uuid} from "uuid";
@@ -6,6 +6,7 @@ import {v4 as uuid} from "uuid";
 export default function Game({ onAddUser, onCurrentUser, currentUser, onAddUserPlants, hasLoggedIn, onHasLoggedIn }) {
 
     // const thisUser = currentUser.id
+    const [ users, setUsers ] = useState([]);
     const thisUserUsername = currentUser.username
 
   
@@ -43,8 +44,9 @@ return (
         : 
         <div> 
             <Login 
-                onAddUser={onAddUser}
+                onAddUser={(newUser)=>setUsers([...users, newUser])}
                 onCurrentUser={onCurrentUser} 
+                currentUser={currentUser}
                 onHasLoggedIn={onHasLoggedIn}
             />
         </div>
