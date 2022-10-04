@@ -1,7 +1,5 @@
 import React from "react";
-import Plantopedia from "./Plantopedia";
 
-let plantopediaPlant
 
 function GameDetails() {
         return(

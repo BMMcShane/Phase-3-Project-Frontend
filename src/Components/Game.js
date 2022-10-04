@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import GameDetails from "./GameDetails";
-// import Plantopedia from "./Plantopedia";
 import Login from "./Login"
 import {v4 as uuid} from "uuid";
 
@@ -9,14 +8,7 @@ export default function Game({ onAddUser, onCurrentUser, currentUser, onAddUserP
     // const thisUser = currentUser.id
     const thisUserUsername = currentUser.username
 
-    let plantList 
-
-    useEffect(() => {
-        fetch(`http://localhost:9292/plants`)
-            .then(res => res.json())
-            .then(plantList)
-      }, []);
-
+  
     //const [cityFormatted, setCityFormatted] = useState("")
 
     // function handleNewPlant(plantopediaPlant) {

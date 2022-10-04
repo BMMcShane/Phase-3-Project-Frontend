@@ -3,7 +3,7 @@ import Tutorial from "./Tutorial";
 import Plantopedia from "./Plantopedia";
 
 
-function MiscBox() {
+function MiscBox( {plantList}) {
     const [box, setBox] = useState(true)
 
     function handleMiscChange(value) {
@@ -13,7 +13,7 @@ function MiscBox() {
     };
 
     function handleReturn(box) {
-        return (box ? <Tutorial /> : <Plantopedia />);
+        return (box ? <Tutorial /> : <Plantopedia plantList={plantList}/>);
     }
 
     return (

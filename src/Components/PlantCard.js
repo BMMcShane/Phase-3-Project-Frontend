@@ -2,7 +2,8 @@ import React, { useState } from "react"
 
 export default function PlantCard( {details} ) {
 
-    const [isClicked, setIsClicked] = useState(false)
+    const [isClicked, setIsClicked] = useState(false);
+   
 
     const name = details.name
     // const image = details.image
@@ -45,6 +46,8 @@ export default function PlantCard( {details} ) {
          <div onClick={() => setIsClicked(!isClicked)}>
             {isClicked ? detailCardBack : detailCardFront}
          </div>
+
+        
         </div>
          </React.Fragment>
     );
