@@ -3,13 +3,19 @@ import GameDetails from "./GameDetails";
 import Login from "./Login"
 import {v4 as uuid} from "uuid";
 
-export default function Game({ onAddUser, onCurrentUser, currentUser, onAddUserPlants, hasLoggedIn, onHasLoggedIn }) {
+export default function Game({onCurrentUser, currentUser, hasLoggedIn, onHasLoggedIn, onAddUser }) {
 
     // const thisUser = currentUser.id
-    const [ users, setUsers ] = useState([]);
+    // const [ users, setUsers ] = useState([]);
     const thisUserUsername = currentUser.username
 
-  
+
+
+
+
+        
+
+    
     //const [cityFormatted, setCityFormatted] = useState("")
 
     // function handleNewPlant(plantopediaPlant) {
@@ -23,12 +29,14 @@ export default function Game({ onAddUser, onCurrentUser, currentUser, onAddUserP
     //         })
     // }
 
+
+
 return (
     <React.Fragment>
     <div>
         {hasLoggedIn ?
         <div>
-            <h1>Welcome, {thisUserUsername}!</h1>
+            <h2>Welcome, {thisUserUsername}!</h2>
             <p>Browse and purchase new plants to add to your collection</p>
 {/* 
                 //onCityFormatSet={(formattedCity) => setCityFormatted(formattedCity)}
@@ -44,9 +52,8 @@ return (
         : 
         <div> 
             <Login 
-                onAddUser={(newUser)=>setUsers([...users, newUser])}
+                onAddUser={onAddUser}
                 onCurrentUser={onCurrentUser} 
-                currentUser={currentUser}
                 onHasLoggedIn={onHasLoggedIn}
             />
         </div>

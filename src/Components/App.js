@@ -14,7 +14,7 @@ function App() {
 
 const [ users, setUsers ] = useState([]);
 const [currentUser, setCurrentUser ] = useState('')
-const [ plantList, setPlantList ] = useState([]);
+
 
 const [hasLoggedIn, setHasLoggedIn] = useState(false)
 
@@ -35,8 +35,8 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
         onAddUser={(newUser)=>setUsers([...users, newUser])}
         onCurrentUser={(newUser)=>setCurrentUser(newUser)}
         currentUser={currentUser}
-        onAddUserPlants={(freshPlant)=>setPlantList([...plantList, freshPlant])}
-        plantList={plantList}
+        // onAddUserPlants={(freshPlant)=>setPlantList([...plantList, freshPlant])}
+        // plantList={plantList}
         onHasLoggedIn={() => setHasLoggedIn(true)}
         hasLoggedIn={hasLoggedIn}
         />

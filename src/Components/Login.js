@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { setState, useState, useEffect } from "react";
 
 
-export default function Login({onCurrentUser, setCurrentUser, onHasLoggedIn}){
+export default function Login({onCurrentUser, onAddUser, onHasLoggedIn, hasLoggedIn}){
 
     // const timestamp = Date.now();
     // const loggedInTime = console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp));
 
-
+    // const [usernames, setUsernames] = useState([])
     const [ userData, setUserData ] = useState({
         username: '',
         password: '',
       });
-    
+
       const [ loginError, setLoginError] = useState(null)
+
+
     
       // updating the user's input as they type...
       function handleChange(e) {
@@ -21,10 +23,13 @@ export default function Login({onCurrentUser, setCurrentUser, onHasLoggedIn}){
           });
       }
     
+      
       // once submit their name, posts their username and password
       function handleSubmit(e) {
         e.preventDefault();
-    
+  
+
+
         const newUser = {
           username: userData.username,
           password: userData.password,
@@ -43,18 +48,50 @@ export default function Login({onCurrentUser, setCurrentUser, onHasLoggedIn}){
     })
       .then((r) => r.json())
       .then((newUser) => {
-        setCurrentUser(newUser)
-        setLoginError(true)
-        onHasLoggedIn()
-      })
-      .catch(() => {
-        console.log('login credentials')
+        onAddUser(newUser)
         setLoginError(false)
-        console.log(newUser)
-      });
-    }
-    
+        onHasLoggedIn()
+        getUsernames()
+        
 
+      })
+      
+      .catch(() => {
+        setLoginError(true)
+        console.log(`${newUser.username} is not available as a username`)
+      });
+
+      }
+   
+
+
+function getUsernames() {
+  const usernames = [];
+        fetch("http://localhost:9292/farmers")
+        .then(r => r.json())
+        .then((json) => usernames.push(json));
+        console.log([usernames])
+
+     
+        // const newArray = usernames.map((username) 
+        //   {username === userData.username} ? loginError(true) : loginError(false)
+
+        // )}
+  
+
+      }
+      
+        
+        // {usernames.usernames.username}
+        
+        // usernames[usernames].map((username) => userData.username != username ? hasLoggedIn : setLoginError(true))
+    
+   
+  
+
+      
+
+      
 
 return (
   <React.Fragment>
