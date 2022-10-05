@@ -3,7 +3,7 @@ import React from "react";
 function Tutorial(){
     return (
         <div id="tutorial-content">
-            <h4> I am Tutorial </h4>
+            <h2> Guide </h2>
             <p>The end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never the end is never </p>
         </div>
     )

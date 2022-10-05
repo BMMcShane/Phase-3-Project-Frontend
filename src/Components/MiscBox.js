@@ -8,7 +8,7 @@ function MiscBox() {
 
     function handleMiscChange(value) {
        setBox(value);
-       console.log(box)
+    //    console.log(box)
        handleReturn(box);
     };
 
@@ -27,7 +27,6 @@ function MiscBox() {
                 </button>
             </div>
 
-            <br />
             {handleReturn(box)}
             
 

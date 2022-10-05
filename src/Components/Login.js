@@ -7,7 +7,6 @@ function Login(){
 
     return loggedin ? (
         <div id="game-box">
-            <p> You Should see me!</p>
             <Game />
         </div>
     ) : (

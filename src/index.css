@@ -8,7 +8,8 @@ body{
 }
 h2{
   font-family: 'seriousr4b', sans-serif;
-  @apply text-3xl p-5 block
+  line-height: 10px;
+  @apply text-2xl p-3 block
 }
 
 
@@ -21,61 +22,83 @@ h2{
 
 
 #column-table{
-  @apply inline-flex max-h-full bg-white
+  @apply inline-flex bg-white
 }
 
 
 
 #left-column{
-  @apply basis-1/4
+  @apply w-1/4
 }
 #mascot-btn {
   @apply m-5
 }
-#misc-box-total{
+#tutorial-content{
   background-color: #717872;
   border:3px black solid;
-  @apply m-5
-}
-#misc-box-navbar{
-  /* @apply inline-flex */
-}
-.misc-box-btn{
-  font-family: 'seriousr4b', sans-serif;
-  border:2px black solid;
-  overflow:hidden;
-  @apply w-6/12 py-5 inline
-}
-#tutorial-content{
-  width: 300px;
-  height: 100px;
   overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
+  height: 200px;
+  /* scrollbar-color: rebeccapurple green; */
   scrollbar-width: thin;
+  @apply m-5 mt-0
 }
+
 
 
 
 #game-column{
-  @apply basis-1/2
+  display: flex;
+  flex-flow: column;
+  @apply w-1/2
 }
 #game-box {
   background-color: #717872;
-  @apply m-5 max-h-max
+  /* height: 90%; */
+  border: 3px black solid;
+  flex-grow: 1;
+  @apply my-10
+}
+.game-content{
+  display: flex;
+  flex-flow: column;
+  @apply h-full
+}
+.plotbox{
+  flex-grow: 1;
+@apply inline-grid grid-cols-5 grid-rows-5 gap-5 justify-center w-11/12 mx-auto my-5
+}
+.plot{
+  /* height: 50px;
+  width: 50px; */
+  background-color: darkgray;
+@apply w-full h-full text-center
 }
 
 
 
 #right-column{
-  @apply basis-1/4
+  @apply w-1/4
 }
 #coin-box {
   background-color: #717872;
+  border:3px black solid;
+  height: 22%;
   @apply m-5
 }
 #shop-box{
   background-color: #717872;
+  border:3px black solid;
+  height: 35%;
   @apply m-5
+}
+.buy-btn{
+  border: 2px black solid;
+}
+#plantopedia-content{
+  background-color: #717872;
+  border:3px black solid;
+  height: 30%;
+  @apply m-5 mt-0
 }
 
 

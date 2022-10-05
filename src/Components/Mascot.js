@@ -12,6 +12,7 @@ function Mascot() {
         
             <button id="mascot-btn" onClick={clicker}>
                 <img id="mascot-img" src={kitty} alt="blah"/>
+                <h2>MewMew's Mill</h2>
             </button>
 
     );

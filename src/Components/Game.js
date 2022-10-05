@@ -3,7 +3,7 @@ import GameDetails from "./GameDetails";
 
 function Game() {
     return (
-        <div>
+        <div className="game-content">
             <GameDetails />
         </div>
     );
