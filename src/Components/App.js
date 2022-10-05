@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Game from "./Game"
 import Mascot from "./Mascot";
-import MiscBox from "./MiscBox";
+// import MiscBox from "./MiscBox";
+import Plantopedia from "./Plantopedia";
+import Tutorial from "./Tutorial";
 import Shop from "./Shop";
 import Coins from "./Coins";
 import Credits from "./Credits";
@@ -22,12 +24,10 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
 
   return (
     <div className="App">
-      <br/>
-      <br/>
       <div id="column-table">
       <div id="left-column">
         <Mascot />
-        <MiscBox />
+        <Tutorial />
       </div>
 
       <div id="game-column">
@@ -47,6 +47,7 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
       <div id="right-column">
         <Coins />
         <Shop />
+        <Plantopedia />
       </div>
       </div>
       <br />
