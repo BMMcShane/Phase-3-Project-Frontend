@@ -163,12 +163,17 @@ h2{
   flex-grow: 1;
 @apply inline-grid grid-cols-5 grid-rows-5 gap-9 justify-center w-11/12 mx-auto my-5
 }
-.plot{
+.locked-plot{
   /* height: 50px;
   width: 50px; */
-  background-color: darkgray;
+  background-color: rgb(66, 22, 199);
   @include other( 4px, black, rgb(77, 71, 71) );
 @apply w-5/6 h-5/6 text-center
+}
+.unlocked-plot{
+  background-color: rgb(144, 33, 33);
+  @include other( 4px, black, rgb(77, 71, 71) );
+  @apply w-5/6 h-5/6 text-center
 }
 .plot button{
   background-color: rgb(77, 71, 71);

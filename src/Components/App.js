@@ -9,14 +9,11 @@ import Coins from "./Coins";
 
 
 function App() {
-  const [coinCount, setCoinCount] = useState()
-  
-  useEffect(() => {
-    setCoinCount(100);
-    console.log(coinCount)
-  })
+  const [coinCount, setCoinCount] = useState(500)
+  const [farmLevel, setFarmLevel] = useState(5)
 
-  function handlePurchase(coinCount, price) {
+
+  function handlePurchase(price) {
     if (coinCount > price) {
       setCoinCount(coinCount - price);
     } else {
@@ -24,11 +21,50 @@ function App() {
     };
   }
 
+  function upgradeFarmLevel(price) {
+    if (farmLevel < 25 && price <= coinCount) {
+      setFarmLevel(farmLevel + 1);
+      handlePurchase(price);
+      plotUnlockChecker();
+    } else {
+      console.log("Error")
+    };
+  }
+
+  function plotUnlockChecker(farmLevel){
+    let lockedPlots = document.getElementsByClassName('locked-plot');
+    console.log(lockedPlots)
+    let tempFarmLevel = farmLevel;
+
+    if (lockedPlots.length === 25 && farmLevel === 5){
+      for (var i = tempFarmLevel; i > 0; i--) unlockPlot();
+    } else {
+      unlockPlot();
+    }
+  }
+
+  function unlockPlot() {
+    document.getElementsByClassName('locked-plot')[0].className = "unlocked-plot";
+    // goal.className = "unlocked-plot";
+  }
+
+  function handlePurchase(price) {
+    if (coinCount >= price) {
+      setCoinCount(coinCount - price);
+    } else {
+      console.log("Not Enough Coins");
+    };
+  }
+
+  function clicker() {
+    setCoinCount(coinCount + 1);
+  }
+
   return (
-    <div className="App">
+    <div className="App" onLoad={plotUnlockChecker}>
       <div id="column-table">
       <div id="left-column">
-        <Mascot />
+        <Mascot clicker={clicker}/>
         <Tutorial />
       </div>
 
@@ -38,9 +74,9 @@ function App() {
 
       <div id="right-column">
         <br/>
-        <Coins coinCount={coinCount}/>
+        <Coins coinCount={coinCount} farmLevel={farmLevel}/>
         <br/>
-        <Shop coinCount={coinCount} handlePurchase={handlePurchase}/>
+        <Shop handlePurchase={handlePurchase} upgradeFarmLevel={upgradeFarmLevel} />
         <br/>
         <Plantopedia />
         <br/>
