@@ -1,5 +1,5 @@
 import React from "react";
-import kitty from "../Assets/kitty.png";
+import MewMew from "../Assets/MewMew.gif";
 
 function Mascot({clicker}) {
     
@@ -11,7 +11,7 @@ function Mascot({clicker}) {
     return(
         
             <button id="mascot-btn" onClick={() => clicker()}>
-                <img id="mascot-img" src={kitty} alt="blah"/>
+                <img id="mascot-img" src={MewMew} alt="blah"/>
                 <h2>MewMew's Mill</h2>
             </button>
 
