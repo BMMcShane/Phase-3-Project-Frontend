@@ -1,6 +1,6 @@
 import React from "react";
 
-function Shop({handlePurchase, upgradeFarmLevel}) {
+function Shop({handlePurchase, upgradeFarmLevel, upgradeTools}) {
 
     // function shopclick(e){
     //     console.log(`${e.target.value}`)
@@ -20,7 +20,7 @@ function Shop({handlePurchase, upgradeFarmLevel}) {
             </button>
             <br/>
             <p>Upgrade Tools</p>
-            <button className="buy-btn" onClick={() => handlePurchase(15)} value="Hoes">
+            <button className="buy-btn" onClick={() => upgradeTools(15)} value="Hoes">
                 15 coins
             </button>
         </div>
