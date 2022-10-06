@@ -1,163 +1,139 @@
 import React from "react";
+import empty from "../Assets/farmin/Empty Plot.png"
 
-function GameDetails() {
+function GameDetails({plantPlant}) {
 
-    function plotclick(e) {
-        console.log(`click ${e.target.id}`);
-    }
+    // function plotclick(e) {
+    //     console.log(`click ${e.target.id}`);
+    // }
 
     return(
         <div className="game-content">
             <h2>Your Farm:</h2>
             <div className="plotbox">
                 <div className="locked-plot">
-                    <button id="1" onClick={plotclick}>
-                        a
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(1)}>
+                        <img id="1" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="2" onClick={plotclick}>
-                        b
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(2)}>
+                        <img id="2" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="3" onClick={plotclick}>
-                        c
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(3)}>
+                        <img id="3" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="4" onClick={plotclick}>
-                        d
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(4)}>
+                        <img id="4" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="5" onClick={plotclick}>
-                        e
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(5)}>
+                        <img id="5" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="6" onClick={plotclick}>
-                        f
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(6)}>
+                        <img id="6" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="7" onClick={plotclick}>
-                        g
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(7)}>
+                        <img id="7" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="8" onClick={plotclick}>
-                        h
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(8)}>
+                        <img id="8" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="9" onClick={plotclick}>
-                        i
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(9)}>
+                        <img id="9" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="10" onClick={plotclick}>
-                        j
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(10)}>
+                        <img id="10" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="11" onClick={plotclick}>
-                        k
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(11)}>
+                        <img id="11" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="12" onClick={plotclick}>
-                        l
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(12)}>
+                        <img id="12" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="13" onClick={plotclick}>
-                        m
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(13)}>
+                        <img id="13" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="14" onClick={plotclick}>
-                        n
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(14)}>
+                        <img id="14" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="15" onClick={plotclick}>
-                        o
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(15)}>
+                        <img id="15" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="16" onClick={plotclick}>
-                        p
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(16)}>
+                        <img id="16" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="17" onClick={plotclick}>
-                        q
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(17)}>
+                        <img id="17" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="18" onClick={plotclick}>
-                        r
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(18)}>
+                        <img id="18" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="19" onClick={plotclick}>
-                        s
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(19)}>
+                        <img id="19" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="20" onClick={plotclick}>
-                        t
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(20)}>
+                        <img id="20" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="21" onClick={plotclick}>
-                        u
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(21)}>
+                        <img id="21" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="22" onClick={plotclick}>
-                        v
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(22)}>
+                        <img id="22" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="23" onClick={plotclick}>
-                        w
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(23)}>
+                        <img id="23" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="24" onClick={plotclick}>
-                        x
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(24)}>
+                        <img id="24" src={empty} alt="" />
                     </button>
                 </div>
                 <div className="locked-plot">
-                    <button id="25" onClick={plotclick}>
-                        y
-                        <img src="" alt="" />
+                    <button onClick={() => plantPlant(25)}>
+                        <img id="25" src={empty} alt="" />
                     </button>
                 </div>
             </div>

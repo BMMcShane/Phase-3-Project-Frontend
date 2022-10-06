@@ -1,10 +1,10 @@
 import React from "react";
 import GameDetails from "./GameDetails";
 
-function Game() {
+function Game({plantPlant}) {
     return (
         <div className="game-content">
-            <GameDetails />
+            <GameDetails plantPlant={plantPlant}/>
         </div>
     );
 }

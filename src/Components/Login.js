@@ -2,12 +2,12 @@ import React from "react";
 import Game from "./Game";
 
 
-function Login(){
+function Login({plantPlant}){
     let loggedin = true;
 
     return loggedin ? (
         <div id="game-box">
-            <Game />
+            <Game plantPlant={plantPlant}/>
         </div>
     ) : (
         <div id="login-dumbass">
