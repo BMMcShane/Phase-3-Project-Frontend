@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-function LogIn() {
+function LogIn({isLogin, setUserObject}) {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+
   const [response, setResponse] = useState({});
 
-  //   const [savedCookie, setSavedCookie] = useState({});
-  //   const [cookies, setCookie, removeCookie] = useCookies([""]);
+    // const [savedCookie, setSavedCookie] = useState({});
+    // const [cookies, setCookie, removeCookie] = useCookies([""]);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,7 +20,7 @@ function LogIn() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(formData);
-    fetch('http://localhost:9292/farmers', {
+    fetch(`http://localhost:9292/${isLogin?"login":"signup"}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,23 +30,32 @@ function LogIn() {
       .then((response) => response.json())
       .then((data) => {
       setResponse(data);
-    
-        // setCookie("x-access-token", data["x-access-token"]);
-        // setSavedCookie({ cookie: data["x-access-token"] });
-      })
-      .catch((error) => window.alert(error));
+      if (data["error"]) {
+        window.alert (data["error"]);
+      }
+      else {
+        setUserObject({username: formData.username, session_cookie: data["session_cookie"]})
+      }
+    })
   }
+
+      
+  
+    
+      // setCookie("x-access-token", data["x-access-token"]);
+      // setSavedCookie({ cookie: data["x-access-token"] });
+
 
   return (
     <React.Fragment>
       
       <br />
       <div>
-      {response.success == false ? 
-       (<h2>Bummer! That username is taken. Try a different username!</h2>)
-       : 
-      (<h2>Sign Up Below To Create A Farm Of Your Own!</h2>)
-       }
+      {response.success ? (
+          <h3>Welcome!</h3>
+        ) : (
+          <h3>You are not logged in yet.</h3>
+        )}
 
           <form id="login-form-input">
             <br />
@@ -67,7 +78,7 @@ function LogIn() {
           
           <div id="input-button">
             <button type="submit" id="submit" onClick={handleSubmit}>
-              <h2>SUBMIT</h2>
+              <h2>{isLogin? "LOG IN" : "SIGN UP"}</h2>
             </button>
           </div>
           </form>

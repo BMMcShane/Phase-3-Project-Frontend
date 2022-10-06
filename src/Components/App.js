@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import Login from "./Login";
 import Mascot from "./Mascot";
 import Game from "./Game"
-// import MiscBox from "./MiscBox";
+import Header from "./Header"
 import Plantopedia from "./Plantopedia";
 import Tutorial from "./Tutorial";
 import Shop from "./Shop";
@@ -10,10 +9,14 @@ import Coins from "./Coins";
 
 
 function App() {
+
+  const [userObject, setUserObject] = useState(JSON.parse(localStorage.getItem("userObject")))
+  useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject));
+}, [userObject]);
+
   const [coinCount, setCoinCount] = useState(500)
   const [farmLevel, setFarmLevel] = useState(5)
-  const [response, setResponse] = useState(null);
-    
+
 
   function handlePurchase(price) {
     if (coinCount > price) {
@@ -70,10 +73,14 @@ function App() {
         <Tutorial />
       </div>
 {/* create some sort of ternery to switch between login and game rendering? */}
-     <div id="game-column">
-     <Login />
-     <Game response={response} setResponse={setResponse}/>
-      </div>
+    <div id="game-column">
+             {userObject===null?<Header userObject={userObject} setUserObject={setUserObject}/>:<div/>}
+             
+
+      
+            </div>
+            
+    
 
       <div id="right-column">
         <br/>
@@ -85,8 +92,8 @@ function App() {
         <br/>
       </div>
       </div>
-    </div>
-  );
+      </div>
+    );
 }
 
 export default App;
