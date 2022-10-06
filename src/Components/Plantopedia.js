@@ -1,26 +1,8 @@
-import React, { useEffect, useState } from "react";
-import PlantCard from "./PlantCard";
-import PlantList from "./PlantList";
+import React from "react";
+import kitty from "../Assets/kitty.png";
 
 
-
-export default function Plantopedia(){
-
-    // fetch plants 
-    
-    const [currentPlant, setCurrentPlant] = useState({});
-    const [ plantList, setPlantList] = useState({});
-
-    const selectedPlant = 1
-    
-
-    useEffect(() => {
-      fetch(`http://localhost:9292/plants/${selectedPlant}`)
-          .then(res => res.json())
-          .then(setPlantList)
-          console.log(plantList)
-    }, [currentPlant]);
-
+function Plantopedia(){
 
     function plantClick(name, price, description, url, growTime) {
         let displayPic = document.getElementById("displayed-plant-pic");
@@ -40,16 +22,6 @@ export default function Plantopedia(){
     return (
         <div id="plantopedia-content">
             <h2> Plantopedia </h2>
-<<<<<<< HEAD
-            <p> Hear me roar.</p>
-
-            <PlantList onHandleCurrentPlant={(selectedPlant) => setCurrentPlant(selectedPlant)} />
-
-        
-            <PlantCard details={plantList} selectedPlant={selectedPlant}/>
-               
-       
-=======
             <div id="plant-column-one">
                 <img  id="displayed-plant-pic" src={kitty} alt="Plant" />
             </div>
@@ -121,12 +93,9 @@ export default function Plantopedia(){
                     </button>
                 </div>
             </div>
->>>>>>> origin
         </div>
-     
-            // {/* Map of unlocked plants with image, name, and detail. 
-            // Contain all in one of those slideshow things. */}
-        
     )
 
 }
+
+export default Plantopedia;

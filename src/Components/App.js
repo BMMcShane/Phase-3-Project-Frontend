@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Game from "./Game"
+import React, {useEffect, useState} from "react";
+import Login from "./Login";
 import Mascot from "./Mascot";
 // import MiscBox from "./MiscBox";
 import Plantopedia from "./Plantopedia";
@@ -8,18 +8,57 @@ import Shop from "./Shop";
 import Coins from "./Coins";
 
 
-
 function App() {
+  const [coinCount, setCoinCount] = useState(500)
+  const [farmLevel, setFarmLevel] = useState(5)
 
 
+  function handlePurchase(price) {
+    if (coinCount > price) {
+      setCoinCount(coinCount - price);
+    } else {
+      console.log("Not Enough Coins");
+    };
+  }
 
-const [ users, setUsers ] = useState([]);
-const [currentUser, setCurrentUser ] = useState('')
+  function upgradeFarmLevel(price) {
+    if (farmLevel < 25 && price <= coinCount) {
+      setFarmLevel(farmLevel + 1);
+      handlePurchase(price);
+      plotUnlockChecker();
+    } else {
+      console.log("Error")
+    };
+  }
 
+  function plotUnlockChecker(farmLevel){
+    let lockedPlots = document.getElementsByClassName('locked-plot');
+    console.log(lockedPlots)
+    let tempFarmLevel = farmLevel;
 
-const [hasLoggedIn, setHasLoggedIn] = useState(false)
+    if (lockedPlots.length === 25 && farmLevel === 5){
+      for (var i = tempFarmLevel; i > 0; i--) unlockPlot();
+    } else {
+      unlockPlot();
+    }
+  }
 
+  function unlockPlot() {
+    document.getElementsByClassName('locked-plot')[0].className = "unlocked-plot";
+    // goal.className = "unlocked-plot";
+  }
 
+  function handlePurchase(price) {
+    if (coinCount >= price) {
+      setCoinCount(coinCount - price);
+    } else {
+      console.log("Not Enough Coins");
+    };
+  }
+
+  function clicker() {
+    setCoinCount(coinCount + 1);
+  }
 
   return (
     <div className="App" onLoad={plotUnlockChecker}>
@@ -30,17 +69,7 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
       </div>
 
       <div id="game-column">
-        <Game
-        onAddUser={(newUser)=>setUsers([...users, newUser])}
-        onCurrentUser={(newUser)=>setCurrentUser(newUser)}
-        currentUser={currentUser}
-        // onAddUserPlants={(freshPlant)=>setPlantList([...plantList, freshPlant])}
-        // plantList={plantList}
-        onHasLoggedIn={() => setHasLoggedIn(true)}
-        hasLoggedIn={hasLoggedIn}
-        />
-      
-      
+        <Login />
       </div>
 
       <div id="right-column">
