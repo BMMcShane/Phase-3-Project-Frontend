@@ -6,7 +6,6 @@ import Plantopedia from "./Plantopedia";
 import Tutorial from "./Tutorial";
 import Shop from "./Shop";
 import Coins from "./Coins";
-import Credits from "./Credits";
 
 
 
@@ -23,10 +22,10 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
 
 
   return (
-    <div className="App">
+    <div className="App" onLoad={plotUnlockChecker}>
       <div id="column-table">
       <div id="left-column">
-        <Mascot />
+        <Mascot clicker={clicker}/>
         <Tutorial />
       </div>
 
@@ -45,14 +44,15 @@ const [hasLoggedIn, setHasLoggedIn] = useState(false)
       </div>
 
       <div id="right-column">
-        <Coins />
-        <Shop />
+        <br/>
+        <Coins coinCount={coinCount} farmLevel={farmLevel}/>
+        <br/>
+        <Shop handlePurchase={handlePurchase} upgradeFarmLevel={upgradeFarmLevel} />
+        <br/>
         <Plantopedia />
+        <br/>
       </div>
       </div>
-      <br />
-      <br />
-      <Credits />
     </div>
   );
 }

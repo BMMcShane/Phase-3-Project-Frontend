@@ -1,7 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+<<<<<<< HEAD
 import './index.css';
 import App from './Components/App.js';
+=======
+import './index.scss';
+import App from '../src/Components/App.js';
+import { BrowserRouter } from "react-router-dom";
+
+
+const port = process.env.PORT || 4000;
+>>>>>>> origin
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
