@@ -14,6 +14,7 @@ h2{
   @apply text-2xl p-1 block italic
 }
 
+
 @mixin step1( $width, $color ) {
   box-shadow: 
     $width 0 $color, 
@@ -201,6 +202,7 @@ h2{
   float: left;
   @apply w-3/4
 }
+
 .buy-btn{
   @include step2v2( 4px, black, #717872 );
 }
@@ -238,4 +240,28 @@ h2{
 #credit-content{
   background-color: #717872;
   @apply basis-1/3 text-center mx-auto
+}
+
+
+
+// updated changes from login -nessa
+h3{
+  @apply text-2xl p-1 block italic
+}
+
+::placeholder{
+  text-align: center;
+}
+
+
+#input-text{
+  background-color: white;
+  @include other( 3px, black, #ffffff );
+  @apply m-5 mb-5 w-32
+}
+
+#submit{
+  background-color: #717872;
+  @include other( 3px, black, #717872 );
+  @apply m-10 mb-5 w-72
 }
