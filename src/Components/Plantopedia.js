@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import PlantCard from "./PlantCard";
 import PlantList from "./PlantList";
@@ -21,11 +20,6 @@ export default function Plantopedia(){
           .then(setPlantList)
           console.log(plantList)
     }, [currentPlant]);
-=======
-import React from "react";
-import kitty from "../Assets/kitty.png";
-
->>>>>>> origin
 
 
     function plantClick(name, price, description, url, growTime) {
