@@ -1,14 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import GameDetails from "./GameDetails";
 
-<<<<<<< HEAD
-function Game( ) {
-=======
-function Game({plantPlant}) {
->>>>>>> origin
+function Game({plantPlant, userObject}) {
+
+
     return (
         <div className="game-content">
-            <GameDetails plantPlant={plantPlant}/>
+            <GameDetails userObject={userObject} plantPlant={plantPlant}/>
         </div>
     );
 }

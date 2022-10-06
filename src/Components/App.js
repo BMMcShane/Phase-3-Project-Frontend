@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from "react";
 import Mascot from "./Mascot";
-<<<<<<< HEAD
 import Game from "./Game"
 import Header from "./Header"
-=======
->>>>>>> origin
 import Plantopedia from "./Plantopedia";
 import Tutorial from "./Tutorial";
 import Shop from "./Shop";
 import Coins from "./Coins";
 
 
-function App() {
+function App({setNewUser}) {
+
+  const [ignored, forceUpdate] =useState(Math.random())
 
   const [userObject, setUserObject] = useState(JSON.parse(localStorage.getItem("userObject")))
   useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject));
@@ -41,7 +40,6 @@ function App() {
       console.log("Error")
     };
   }
-
 
   // Farm Upgrade Functions:
 
@@ -114,22 +112,24 @@ function App() {
         <Mascot clicker={clicker}/>
         <Tutorial />
       </div>
-<<<<<<< HEAD
 {/* create some sort of ternery to switch between login and game rendering? */}
     <div id="game-column">
              {userObject===null?
-             <Header userObject={userObject} setUserObject={setUserObject}/>
-             :  <Game />}
-            
+             <Header forceUpdate={forceUpdate} userObject={userObject} setUserObject={setUserObject}/>
+             :  
+             <div>
+              <div>
+             <button onClick={()=>{setUserObject(null)}}>
+             <h3>Log Out</h3>
+           </button>
+      
+           <Game userObject={userObject} setNewUser={setNewUser} plantPlant={plantPlant} 
+           />
+                </div>
+            </div>}
             </div>
             
     
-=======
-
-      <div id="game-column">
-        <Login plantPlant={plantPlant}/>
-      </div>
->>>>>>> origin
 
       <div id="right-column">
         <br/>

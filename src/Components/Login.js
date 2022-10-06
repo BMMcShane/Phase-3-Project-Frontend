@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-function LogIn({isLogin, setUserObject}) {
+function LogIn({forceUpdate, isLogin, setUserObject, setNewUser}) {
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
   });
 
 
@@ -29,12 +28,15 @@ function LogIn({isLogin, setUserObject}) {
     })
       .then((response) => response.json())
       .then((data) => {
+      // console.log(data)
       setResponse(data);
       if (data["error"]) {
         window.alert (data["error"]);
       }
       else {
-        setUserObject({username: formData.username, session_cookie: data["session_cookie"]})
+        setUserObject({id: data.farmer_id, username: formData.username, coins: data.coins, unlocked_plants: data.unlocked_plants, locked_plants: data.locked_plants, session_cookie: data["session_cookie"]})
+        setNewUser(false)
+        forceUpdate(Math.random())
       }
     })
   }

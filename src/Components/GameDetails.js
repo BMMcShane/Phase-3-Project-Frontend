@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import empty from "../Assets/farmin/Empty Plot.png"
 
-function GameDetails({plantPlant}) {
+function GameDetails({plantPlant, userObject}) {
 
-    // function plotclick(e) {
-    //     console.log(`click ${e.target.id}`);
-    // }
+console.log(userObject)
+    
+//   const [response, setResponse] = useState({});
+    
+const [userData, setUserData] = useState({
+    username: '',
+    coins: 100,
+    unlocked_plants: '',
+    locked_plants: ''
+    });
 
+const id = userObject.id
+
+useEffect(() =>  {  
+        fetch(`http://localhost:9292/farmers/${id}`)
+          .then((response) => response.json())
+          .then(setUserData) 
+    }, []);
+    
+    console.log(userData)
+
+    function plotclick(e) {
+        console.log(`click ${e.target.id}`);
+    }
     return(
         <div className="game-content">
-            <h2>Your Farm:</h2>
+            <h2>{userObject.username}'s Farm:</h2>
             <div className="plotbox">
                 <div className="locked-plot">
                     <button onClick={() => plantPlant(1)}>
