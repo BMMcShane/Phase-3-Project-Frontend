@@ -52,7 +52,6 @@ export default function Login({onCurrentUser, onAddUser, onHasLoggedIn, hasLogge
         setLoginError(false)
         onHasLoggedIn()
         getUsernames()
-        
 
       })
       

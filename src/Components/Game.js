@@ -38,6 +38,7 @@ return (
         <div>
             <h2>Welcome, {thisUserUsername}!</h2>
             <p>Browse and purchase new plants to add to your collection</p>
+            <GameDetails />
 {/* 
                 //onCityFormatSet={(formattedCity) => setCityFormatted(formattedCity)}
                 // onPlantUpgrade={(plantopediaPlant) => handleNewPlant(plantopediaPlant)}
