@@ -74,10 +74,10 @@ function App() {
       </div>
 {/* create some sort of ternery to switch between login and game rendering? */}
     <div id="game-column">
-             {userObject===null?<Header userObject={userObject} setUserObject={setUserObject}/>:<div/>}
-             
-
-      
+             {userObject===null?
+             <Header userObject={userObject} setUserObject={setUserObject}/>
+             :  <Game />}
+            
             </div>
             
     
