@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Login from "./Login";
 import Mascot from "./Mascot";
+import Game from "./Game"
 // import MiscBox from "./MiscBox";
 import Plantopedia from "./Plantopedia";
 import Tutorial from "./Tutorial";
@@ -11,7 +12,8 @@ import Coins from "./Coins";
 function App() {
   const [coinCount, setCoinCount] = useState(500)
   const [farmLevel, setFarmLevel] = useState(5)
-
+  const [response, setResponse] = useState(null);
+    
 
   function handlePurchase(price) {
     if (coinCount > price) {
@@ -67,9 +69,10 @@ function App() {
         <Mascot clicker={clicker}/>
         <Tutorial />
       </div>
-
-      <div id="game-column">
-        <Login />
+{/* create some sort of ternery to switch between login and game rendering? */}
+     <div id="game-column">
+     <Login />
+     <Game response={response} setResponse={setResponse}/>
       </div>
 
       <div id="right-column">
