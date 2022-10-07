@@ -37,9 +37,9 @@ function App({setNewUser, userData}) {
 //   console.log(farmData.farmer_upgrade_level)
 
 
-  const [coinCount, setCoinCount] = useState('')
-  const [farmLevel, setFarmLevel] = useState('')
-  const [toolLevel, setToolLevel] = useState('')
+  const [coinCount, setCoinCount] = useState('100')
+  const [farmLevel, setFarmLevel] = useState('1')
+  const [toolLevel, setToolLevel] = useState('1')
 
 
   // Multipurpose Purchase function:
@@ -114,15 +114,15 @@ function App({setNewUser, userData}) {
     let price = document.getElementById('hidden-price').textContent;
 
     //user id is pulled from the top fetch for farm data
-    let plot_location = plot
+    // let plot_location = plotNo
     let plant_id = index
 
     if (price <= coinCount) {
       handlePurchase(price);
-      plot.src = `../Assets/farmin/${plant}/01.gif`;
+      // plot.src = `../Assets/farmin/${plant}/01.gif`;
       // savePlant(index);
 
-        fetch(`http://localhost:9292/farmers/${id}/add_plant/${plant_id}/${plot_location}`, {
+        fetch(`http://localhost:9292/farmers/${id}/add_plant/${plant_id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -132,6 +132,7 @@ function App({setNewUser, userData}) {
           .then((data) => {
           setPlantedPlant(data)
           plantPlant(plot)
+          console.log(plantedPlant)
     
         })
       //add the id of the plant and log the time plant is planted
