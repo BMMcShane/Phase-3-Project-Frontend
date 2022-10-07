@@ -16,12 +16,13 @@ function App({setNewUser, userData}) {
   useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject));
 }, [userObject]);
 
+  const id = userObject.id
+
 
 //fetch for the farm data
 
 // const [farmData, setFarmData] = useState({});
 
-const id = userObject.id
 
 // useEffect(() =>  {  
 //         fetch(`http://localhost:9292/farmers/${id}/farms`)
@@ -50,6 +51,7 @@ const id = userObject.id
       console.log("Not Enough Coins");
     };
   }
+
   // Tool Upgrade Functions:
 
   function upgradeTools(price) {
@@ -103,15 +105,7 @@ const id = userObject.id
 
   // Plant a plant functions
 
-  //hard coding plant ids because they are constants
-  // useEffect(() =>  {  
-  //       fetch(`http://localhost:9292/plants/${id}`)
-  //         .then((response) => response.json())
-  //         .then(setPlantData) 
-  //   }, []);
-    
-  //   console.log(plantData)
-
+  const [plantedPlant, setPlantedPlant] =useState(false);
 
   function plantPlant(plotNo) {
     let plot = document.getElementById(`${plotNo}`);
@@ -119,8 +113,9 @@ const id = userObject.id
     let index = document.getElementById(`hidden-index`).textContent;
     let price = document.getElementById('hidden-price').textContent;
 
-    const plot_location = plot
-    const plant_id = 1
+    //user id is pulled from the top fetch for farm data
+    let plot_location = plot
+    let plant_id = index
 
     if (price <= coinCount) {
       handlePurchase(price);
@@ -135,7 +130,8 @@ const id = userObject.id
         })
           .then((response) => response.json())
           .then((data) => {
-          plantPlant(plot_location)
+          setPlantedPlant(data)
+          plantPlant(plot)
     
         })
 
