@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//Image Imports
 import bubble from "../Assets/farmin/bubble/04.gif";
 import dread from "../Assets/farmin/dread/04.gif";
 import eyeball from "../Assets/farmin/eyeball/04.gif";
@@ -8,7 +9,7 @@ import grass from "../Assets/farmin/grass/04.gif";
 import grassTwo from "../Assets/farmin/grass two/04.gif";
 import hedgefund from "../Assets/farmin/hedgefund/04.gif";
 import lil from "../Assets/farmin/lil/04.gif";
-import pizza from "../Assets/farmin/pizza/03.gif";
+import pizza from "../Assets/farmin/pizza/04.gif";
 import space from "../Assets/farmin/space/04.gif";
 import succ from "../Assets/farmin/succulent/04.gif";
 
@@ -33,7 +34,6 @@ function Plantopedia(){
         hiddenIndex.textContent = index;
         hiddenDevName.textContent = devName;
         hiddenPrice.textContent = devPrice;
-        // console.log(`${e.target.id}`)
     }
 
     return (

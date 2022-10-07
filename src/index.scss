@@ -4,8 +4,11 @@
 
 
 body{
-  background-color: #a5ada7;
+  background-image: url(./Assets/gnoll.webp);
+  background-color: rgb(129, 186, 129);
+  background-blend-mode: multiply;
   font-family: 'superhelio _regular', sans-serif;
+  // overflow: hidden;
   @apply h-full
 }
 
@@ -116,10 +119,16 @@ h2{
   @apply text-center
 }
 
+// #login-container{
+//   background-color: rgb(89, 169, 89);
+//   @include other( 4px, rgb(129,186,129), rgb(89, 169, 89) );
+
+// }
+
 
 
 #column-table{
-  background-color: #c3ccc5;
+  // background-color: #c3ccc5;
   @apply inline-flex  
 }
 
@@ -129,12 +138,15 @@ h2{
   @apply w-1/4 mx-2
 }
 #mascot-btn {
-  @apply m-5
+  background-color: rgb(89, 169, 89);
+  height:40%;
+  @include other( 4px, rgb(129,186,129), rgb(89, 169, 89) );
+  @apply m-5 w-5/6
 }
 #tutorial-content{
-  @include other( 4px, black, #717872 );
+  background-color: rgb(89, 169, 89);
+  @include other( 4px, rgb(129,186,129), rgb(89, 169, 89) );
 
-  background-color: #717872;
   overflow-y: scroll;
   height: 250px;
   /* scrollbar-color: rebeccapurple green; */
@@ -164,23 +176,28 @@ h2{
 }
 .plotbox{
   flex-grow: 1;
-@apply inline-grid grid-cols-5 grid-rows-5 gap-9 justify-center w-11/12 mx-auto my-5
+  @include other( 1px, rgb(129,186,129), rgb(89, 169, 89) );
+  background-color: rgb(89, 169, 89);
+@apply inline-grid grid-cols-5 grid-rows-5 gap-1 justify-center w-11/12 mx-auto my-5
 }
 
 .locked-plot{
   /* height: 50px;
   width: 50px; */
-  background-color: rgb(66, 22, 199);
-  @include other( 4px, black, rgb(77, 71, 71) );
-@apply w-5/6 h-5/6 text-center
+  // background-color: rgb(66, 22, 199);
+  filter: grayscale(100%);
+  background-color: #323432;
+  @include other( 3px, black, #323432 );
+@apply w-4/6 h-4/6 text-center
 }
 .unlocked-plot{
-  background-color: rgb(144, 33, 33);
-  @include other( 4px, black, rgb(77, 71, 71) );
-  @apply w-5/6 h-5/6 text-center
+  // background-color: rgb(144, 33, 33);
+  background-color: #38291d;
+  @include other( 3px, black, #38291d );
+  @apply w-4/6 h-4/6 text-center
 }
 .plot button{
-  background-color: rgb(77, 71, 71);
+  // background-color: rgb(77, 71, 71);
   @apply w-full h-full text-center
 }
 
@@ -192,26 +209,32 @@ h2{
   @apply w-1/4 mx-1 
 }
 #coin-box {
-  background-color: #717872;
-  @include other( 4px, black, #717872 );
+  background-color: rgb(89, 169, 89);
+  @include other( 4px, rgb(129,186,129), rgb(89, 169, 89) );
   @apply m-5 mb-0
 }
 #shop-box{
-  background-color: #717872;
-  @include other( 4px, black, #717872 );
+  background-color: rgb(89, 169, 89);
+  @include other( 4px, rgb(129,186,129), rgb(89, 169, 89) );
+  font-family: 'seriousr4b', sans-serif;
+  font-size: 10px;
   @apply m-5
 }
 #shop-box p{
   float: left;
-  @apply w-3/4
+  // vertical-align: bottom;
+  margin-top: 7px;
+  @apply w-2/4
 }
 
 .buy-btn{
-  @include step2v2( 4px, black, #717872 );
+  color: white;
+  background-color: rgb(12,79,22);
+  @include step2v2( 4px, rgb(15, 113, 8), rgb(12, 79, 22) );
 }
 #plantopedia-content{
-  background-color: #717872;
-  @include other( 4px, black, #717872 );
+  background-color: rgb(89, 169, 89);
+  @include other( 4px, rgb(129,186,129), rgb(89, 169, 89) );
   // overflow: hidden;
   @apply m-5 mt-0
 }
@@ -228,11 +251,12 @@ h2{
 }
 .plantopedia-button-div{
   background-color: #323432;
-  // overflow: hidden;
+  @apply h-5/6
 }
 .plantopedia-button-div button{
-  @include step2v2( 4px, black, #323432 );
-  @apply w-full h-full text-center align-middle 
+  background-color: rgb(129,186,129);
+  @include step2v2( 4px, rgb(15, 113, 8), rgb(12, 79, 22) );
+  @apply w-full h-4/6 text-center align-middle 
 }
 
 

@@ -22,8 +22,8 @@ function Tutorial(){
                 <br/>
                 Anyways, lets get back ta farmin. To plant sumthin, all you gotta do is have the plant you want 'ta grow selected in 
                 your <b><em>PLANTOPEDIA</em></b>, and then you click the plot you want ta grow on. After yous plant that grass, yer gonna have to 
-                wait for it to grow, shouldn't be too long. You'll be able to tell that grass is grown when 
-                the 'lil progress bar 'neath it is all full up. Once thats done, all ya gotta do is click the plant to harvest it. 
+                wait for it to grow, shouldn't be too long. You'll likely be able to tell that yer plant is done grown when 
+                the 'lil fella starts to jiggle. Once thats done, all ya gotta do is click the plant to harvest it. 
                 Finally, ya give all those crops 'ta me, and fer each harvest ya bring in I'll be rewardin yous generously.
                 <br/>
                 <br/>
@@ -35,7 +35,7 @@ function Tutorial(){
                 <br/>
                 With that, yous should know just about all there is 'ta running a good farm, but befer I leave ya, 
                 I have two little bits of advice. First, never try 'ta harvest a succulent befer its done growin, and second, 
-                <b><u>never fergit</u></b> that 'Ole MewMew <b><em>ALWAYS</em></b> gets his cut.
+                 <b><u>never fergit</u></b> that 'Ole MewMew <b><em>ALWAYS</em></b> gets his cut.
                 <br/>
                 <br/>
                 Good luck, and remember to try and have fun here in

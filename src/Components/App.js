@@ -7,39 +7,56 @@ import Tutorial from "./Tutorial";
 import Shop from "./Shop";
 import Coins from "./Coins";
 
+import empty from "../Assets/farmin/Empty Plot.png";
+
 
 function App({setNewUser, userData}) {
 
+  //Set State Functions
   const [ignored, forceUpdate] =useState(Math.random())
+  const [coinCount, setCoinCount] = useState('10000')
+  const [farmLevel, setFarmLevel] = useState(0)
+  const [toolLevel, setToolLevel] = useState(0)
 
+  
+  
+  
   const [userObject, setUserObject] = useState(JSON.parse(localStorage.getItem("userObject")))
   useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject));
 }, [userObject]);
 
-  const id = userObject.id
+  // const id = userObject.id
 
 
 //fetch for the farm data
 
-// const [farmData, setFarmData] = useState({});
+const [farmData, setFarmData] = useState({});
 
 
-// useEffect(() =>  {  
-//         fetch(`http://localhost:9292/farmers/${id}/farms`)
-//           .then((response) => response.json())
-//           .then(setFarmData) 
-//     }, []);
+useEffect(() =>  {  
+        fetch(`http://localhost:9292/farmers/${userObject.id}/farms`)
+          .then((response) => response.json())
+          .then(setFarmData) 
+          // .then(setFarmLevel(farmData.farm_upgrade_level))
+          // .then(statSetter(farmData))
+    }, []);
     
-//     console.log(farmData)
+    console.log(farmData)
+    console.log(farmData.farm_upgrade_level)
 
     // console.log(userData.coins)
-//   console.log(farmData.farm_upgrade_level)
-//   console.log(farmData.farmer_upgrade_level)
+  // console.log(farmData.farm_upgrade_level)
+  // console.log(farmData.farmer_upgrade_level)
 
 
-  const [coinCount, setCoinCount] = useState('100')
-  const [farmLevel, setFarmLevel] = useState('1')
-  const [toolLevel, setToolLevel] = useState('1')
+// Login Upgrade / Coin Setter
+
+// function statSetter() {
+//   // setCoinCount(coins);
+//   setFarmLevel(farmData.farm_upgrade_level);
+//   setToolLevel(farmData.farmer_upgrade_level);
+//   plotUnlockChecker();
+// }
 
 
   // Multipurpose Purchase function:
@@ -47,6 +64,7 @@ function App({setNewUser, userData}) {
   function handlePurchase(price) {
     if (coinCount > price) {
       setCoinCount(coinCount - price);
+      // postAccount();
     } else {
       console.log("Not Enough Coins");
     };
@@ -78,21 +96,21 @@ function App({setNewUser, userData}) {
 
   function plotUnlockChecker(farmLevel){
     let lockedPlots = document.getElementsByClassName('locked-plot');
-    console.log(lockedPlots)
     let tempFarmLevel = farmLevel;
 
-    if (lockedPlots.length === 25 && farmLevel === 5){
+    if (lockedPlots.length === 25 && farmLevel >= 5){
       for (var i = tempFarmLevel; i > 0; i--) unlockPlot();
     } else {
       unlockPlot();
     }
   }
 
-  // window.onload = plotUnlockChecker(farmLevel);
-
   function unlockPlot() {
     let goal = document.getElementsByClassName('locked-plot')[0];
     if (goal.className === 'locked-plot'){
+      for (const child of goal.children) {
+        child.src=empty
+      }
       goal.className = 'unlocked-plot';
     }
   }
@@ -101,7 +119,18 @@ function App({setNewUser, userData}) {
 
   function clicker() {
     setCoinCount(coinCount + 1);
-  }
+  };
+
+  // Timer Function
+  // function startTimer(plot, plant) {
+  //   endTime = Date.now() + 20000;
+  //   if (Date.now() >= endtime) {
+
+  //   }
+
+
+  // };
+  // Harvest Function
 
   // Plant a plant functions
 
@@ -112,17 +141,18 @@ function App({setNewUser, userData}) {
     let plant = document.getElementById(`hidden-dev-name`).textContent;
     let index = document.getElementById(`hidden-index`).textContent;
     let price = document.getElementById('hidden-price').textContent;
+    let parent = plot.closest('.unlocked-plot');
 
     //user id is pulled from the top fetch for farm data
     // let plot_location = plotNo
     let plant_id = index
 
-    if (price <= coinCount) {
+    if (price <= coinCount && parent != undefined) {
       handlePurchase(price);
-      // plot.src = `../Assets/farmin/${plant}/01.gif`;
-      // savePlant(index);
+      // startTimer(plot, plant);
+      plot.src = `https://mewmewmill.s3.us-west-2.amazonaws.com/${plant}/01.gif`;
 
-        fetch(`http://localhost:9292/farmers/${id}/add_plant/${plant_id}`, {
+        fetch(`http://localhost:9292/farmers/${userObject.id}/add_plant/${plant_id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -152,10 +182,15 @@ function App({setNewUser, userData}) {
   // Return
 
   return (
-    <div className="App">
+    <div className="App" >
       <div id="column-table">
       <div id="left-column">
+        <br/>
+        {/* <br/> */}
         <Mascot clicker={clicker}/>
+        <br/>
+        <br/>
+        <br/>
         <Tutorial />
       </div>
 {/* create some sort of ternery to switch between login and game rendering? */}
@@ -168,7 +203,13 @@ function App({setNewUser, userData}) {
              <button onClick={()=>{setUserObject(null)}}>
              <h3>Log Out</h3>
            </button>
-           <Game userData={userData} userObject={userObject} setNewUser={setNewUser} plantPlant={plantPlant} 
+           <Game 
+           userData={userData} 
+           userObject={userObject} 
+           setNewUser={setNewUser} 
+           plantPlant={plantPlant} 
+           plotUnlockChecker={plotUnlockChecker}
+           setCoinCount={setCoinCount}
            />
                 </div>
             </div>}
@@ -180,7 +221,7 @@ function App({setNewUser, userData}) {
         <br/>
         <Coins coinCount={coinCount} farmLevel={farmLevel} toolLevel={toolLevel}/>
         <br/>
-        <Shop handlePurchase={handlePurchase} upgradeFarmLevel={upgradeFarmLevel} upgradeTools={upgradeTools} />
+        <Shop upgradeFarmLevel={upgradeFarmLevel} upgradeTools={upgradeTools} />
         <br/>
         <Plantopedia />
         <br/>
