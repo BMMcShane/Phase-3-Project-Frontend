@@ -225,8 +225,9 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
              :  
              <div>
               <div id="input-button">
+                <br />
              <button onClick={()=>{setUserObject(null)}}>
-             <h3>Log Out</h3>
+             <p>Delete Farm 🥺</p>
            </button>
            <Game 
            upgradePlantLevel={upgradePlantLevel}
