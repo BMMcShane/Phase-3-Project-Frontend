@@ -206,7 +206,7 @@ h2{
 #right-column{
   display: flex;
   flex-flow: column;
-  @apply w-1/4 mx-1 
+  @apply w-1/4 mx-3 
 }
 #coin-box {
   background-color: rgb(89, 169, 89);
@@ -287,15 +287,17 @@ h3{
   @apply m-5 mb-5 w-32
 }
 
-#submit{
-  background-color: #717872;
-  @include other( 3px, black, #717872 );
+// #submit{
+//   background-color: #717872;
+//   @include other( 3px, black, #717872 );
+//   @apply m-5 mb-10 w-72
+// }
+
+#login-container button {
+  color: white;
+  background-color: rgb(12,79,22);
+  @include step2v2( 4px, rgb(15, 113, 8), rgb(12, 79, 22) );
   @apply m-5 mb-10 w-72
 }
 
-#login-container button {
-padding: 5px;
-background-color: #717872;
-@include other( 3px, black, #717872 );
-@apply m-5 w-60 mt-10
-}
+

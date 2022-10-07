@@ -10,13 +10,15 @@ import Coins from "./Coins";
 import empty from "../Assets/farmin/Empty Plot.png";
 
 
-function App({setNewUser, userData}) {
+function App({setNewUser, userData, plantClick }) {
 
   //Set State Functions
+  const [selectedPlant, setSelectedPlant] = useState('');
   const [ignored, forceUpdate] =useState(Math.random())
   const [coinCount, setCoinCount] = useState('10000')
   const [farmLevel, setFarmLevel] = useState(0)
   const [toolLevel, setToolLevel] = useState(0)
+  const [plantIndex, setPlantIndex] = useState(0)
 
   
   
@@ -30,19 +32,19 @@ function App({setNewUser, userData}) {
 
 //fetch for the farm data
 
-const [farmData, setFarmData] = useState({});
+// const [farmData, setFarmData] = useState({});
 
 
-useEffect(() =>  {  
-        fetch(`http://localhost:9292/farmers/${userObject.id}/farms`)
-          .then((response) => response.json())
-          .then(setFarmData) 
-          // .then(setFarmLevel(farmData.farm_upgrade_level))
-          // .then(statSetter(farmData))
-    }, []);
+// useEffect(() =>  {  
+//         fetch(`http://localhost:9292/farmers/${userObject.id}/farms`)
+//           .then((response) => response.json())
+//           .then(setFarmData) 
+//           // .then(setFarmLevel(farmData.farm_upgrade_level))
+//           // .then(statSetter(farmData))
+//     }, []);
     
-    console.log(farmData)
-    console.log(farmData.farm_upgrade_level)
+//     console.log(farmData)
+//     console.log(farmData.farm_upgrade_level)
 
     // console.log(userData.coins)
   // console.log(farmData.farm_upgrade_level)
@@ -136,6 +138,7 @@ useEffect(() =>  {
 
   const [plantedPlant, setPlantedPlant] =useState(false);
 
+
   function plantPlant(plotNo) {
     let plot = document.getElementById(`${plotNo}`);
     let plant = document.getElementById(`hidden-dev-name`).textContent;
@@ -144,15 +147,23 @@ useEffect(() =>  {
     let parent = plot.closest('.unlocked-plot');
 
     //user id is pulled from the top fetch for farm data
-    // let plot_location = plotNo
-    let plant_id = index
+    // let plot_location = plantPlant(plotNo)
+    let plant_id = index.textContent
+    console.log(plant_id)
+    // console.log(selectedPlant)
+    // console.log(plant_id)
+    // console.log(plantIndex)
+    // console.log(index)
+    // console.log(plant_location)
+    // console.log(plot)
+    console.log(plotNo)
 
     if (price <= coinCount && parent != undefined) {
       handlePurchase(price);
       // startTimer(plot, plant);
       plot.src = `https://mewmewmill.s3.us-west-2.amazonaws.com/${plant}/01.gif`;
 
-        fetch(`http://localhost:9292/farmers/${userObject.id}/add_plant/${plant_id}`, {
+        fetch(`http://localhost:9292/farmers/${userObject.id}/add_plant/${plant_id}/${plotNo}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -173,12 +184,8 @@ useEffect(() =>  {
     
   }
 
-  // function savePlant(index) {
-  //   console.log('ha');
-  // }
-  
 
-
+  console.log(selectedPlant)
   // Return
 
   return (
@@ -223,7 +230,10 @@ useEffect(() =>  {
         <br/>
         <Shop upgradeFarmLevel={upgradeFarmLevel} upgradeTools={upgradeTools} />
         <br/>
-        <Plantopedia />
+        <Plantopedia 
+        plantCliick={plantClick}
+        setSelectedPlant={setPlantIndex}
+        />
         <br/>
       </div>
       </div>

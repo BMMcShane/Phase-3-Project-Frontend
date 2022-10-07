@@ -34,7 +34,6 @@ useEffect(() =>  {
         setCoinCount(userData.coins)
     }
 
-  
     return(
         <div className="game-content">
             <h2>{userObject.username}'s Farm:</h2>
