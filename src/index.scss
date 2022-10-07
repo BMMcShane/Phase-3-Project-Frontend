@@ -280,10 +280,16 @@ h3{
   text-align: center;
 }
 
+#login-text{
+color: white;
+  -webkit-text-stroke: .5px rgb(0, 0, 0);
+}
 
 #input-text{
   background-color: white;
+  text-align: center;
   @include other( 3px, black, #ffffff );
+    -webkit-text-stroke: .5px rgb(0, 0, 0);
   @apply m-5 mb-5 w-32
 }
 
@@ -296,6 +302,8 @@ h3{
 #login-container button {
   color: white;
   background-color: rgb(12,79,22);
+  -webkit-text-stroke: .5px rgb(0, 0, 0);
+  
   @include step2v2( 4px, rgb(15, 113, 8), rgb(12, 79, 22) );
   @apply m-5 mb-10 w-72
 }

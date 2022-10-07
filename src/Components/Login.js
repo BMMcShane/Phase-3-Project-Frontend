@@ -53,11 +53,13 @@ function LogIn({forceUpdate, isLogin, setUserObject, setNewUser}) {
       
       <br />
       <div>
+      <div id="login-text">
       {response.success ? (
-          <h3>Welcome!</h3>
+          <h2>Welcome!</h2>
         ) : (
-          <h3>You are not logged in yet.</h3>
+          <h2>You are not logged in yet.</h2>
         )}
+        </div>
 
           <form id="login-form-input">
             <br />

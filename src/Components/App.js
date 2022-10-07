@@ -10,7 +10,7 @@ import Coins from "./Coins";
 import empty from "../Assets/farmin/Empty Plot.png";
 
 
-function App({setNewUser, userData, plantClick }) {
+function App({setNewUser, userData, plantClick, hiddenIndex}) {
 
   //Set State Functions
   const [selectedPlant, setSelectedPlant] = useState('');
@@ -148,7 +148,7 @@ function App({setNewUser, userData, plantClick }) {
 
     //user id is pulled from the top fetch for farm data
     // let plot_location = plantPlant(plotNo)
-    let plant_id = index.textContent
+    let plant_id = plantClick(index.textContent)
     console.log(plant_id)
     // console.log(selectedPlant)
     // console.log(plant_id)
@@ -206,7 +206,7 @@ function App({setNewUser, userData, plantClick }) {
              <Header forceUpdate={forceUpdate} userObject={userObject} setUserObject={setUserObject}/>
              :  
              <div>
-              <div>
+              <div id="input-button">
              <button onClick={()=>{setUserObject(null)}}>
              <h3>Log Out</h3>
            </button>

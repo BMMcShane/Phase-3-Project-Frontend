@@ -15,8 +15,7 @@ import succ from "../Assets/farmin/succulent/04.gif";
 
 function Plantopedia(){
     
-    // let plant_id_index = ''
-    const [plantIndex, setPlantIndex] = useState('');
+    
     const [displaySrc, setDisplaySrc] = useState(grass)
 
 
@@ -28,10 +27,10 @@ function Plantopedia(){
         let hiddenIndex = document.getElementById("hidden-index");
         let hiddenDevName = document.getElementById('hidden-dev-name');
         let hiddenPrice = document.getElementById("hidden-price")
-
-        setPlantIndex(hiddenIndex.textContent)
-        console.log(plantIndex)
         
+        let plant_id_index = index
+        console.log(plant_id_index)
+
         setDisplaySrc(url);
         displayName.textContent = `Name: ${name}`;
         displayPrice.textContent = `Costs ¢ ${price}`;
@@ -41,8 +40,6 @@ function Plantopedia(){
         hiddenPrice.textContent = devPrice;
     }
 
-
-    
     return (
         <div id="plantopedia-content">
             <h2> Plantopedia </h2>
