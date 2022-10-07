@@ -15,7 +15,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
   //Set State Functions
   const [selectedPlant, setSelectedPlant] = useState('');
   const [ignored, forceUpdate] =useState(Math.random())
-  const [coinCount, setCoinCount] = useState('10000')
+  const [coinCount, setCoinCount] = useState('15000')
   const [farmLevel, setFarmLevel] = useState(0)
   const [toolLevel, setToolLevel] = useState(0)
   const [plantIndex, setPlantIndex] = useState(0)
@@ -96,6 +96,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
     };
   }
 
+
   function plotUnlockChecker(farmLevel){
     let lockedPlots = document.getElementsByClassName('locked-plot');
     let tempFarmLevel = farmLevel;
@@ -117,6 +118,9 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
     }
   }
 
+
+
+
  // Mascot clicker function
 
   function clicker() {
@@ -135,6 +139,20 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
   // Harvest Function
 
   // Plant a plant functions
+
+  function upgradePlantLevel(plotNo, plant, price) {
+    
+    let plot = document.getElementById(plotNo);
+    if (price <= coinCount) {
+      // setFarmLevel(farmLevel + 1);
+      handlePurchase(price);
+      plot.src = (plant);
+      plotUnlockChecker();
+    } else {
+      console.log("Error")
+    };
+  }
+
 
   const [plantedPlant, setPlantedPlant] =useState(false);
 
@@ -211,6 +229,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
              <h3>Log Out</h3>
            </button>
            <Game 
+           upgradePlantLevel={upgradePlantLevel}
            userData={userData} 
            userObject={userObject} 
            setNewUser={setNewUser} 
@@ -228,9 +247,12 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
         <br/>
         <Coins coinCount={coinCount} farmLevel={farmLevel} toolLevel={toolLevel}/>
         <br/>
+        <br/>
         <Shop upgradeFarmLevel={upgradeFarmLevel} upgradeTools={upgradeTools} />
         <br/>
+        <br/>
         <Plantopedia 
+        upgradePlantLevel={upgradePlantLevel}
         plantCliick={plantClick}
         setSelectedPlant={setPlantIndex}
         />
