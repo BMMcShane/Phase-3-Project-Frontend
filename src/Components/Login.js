@@ -34,7 +34,7 @@ function LogIn({forceUpdate, isLogin, setUserObject, setNewUser}) {
         window.alert (data["error"]);
       }
       else {
-        setUserObject({id: data.farmer_id, username: formData.username, coins: data.coins, unlocked_plants: data.unlocked_plants, locked_plants: data.locked_plants, session_cookie: data["session_cookie"]})
+        setUserObject({id: data.farmer_id, coins: data.coins, username: formData.username, session_cookie: data["session_cookie"]})
         setNewUser(false)
         forceUpdate(Math.random())
       }

@@ -3,16 +3,8 @@ import empty from "../Assets/farmin/Empty Plot.png"
 
 function GameDetails({plantPlant, userObject}) {
 
-console.log(userObject)
-    
-//   const [response, setResponse] = useState({});
-    
-const [userData, setUserData] = useState({
-    username: '',
-    coins: 100,
-    unlocked_plants: '',
-    locked_plants: ''
-    });
+
+const [userData, setUserData] = useState({});
 
 const id = userObject.id
 
@@ -24,9 +16,10 @@ useEffect(() =>  {
     
     console.log(userData)
 
-    function plotclick(e) {
-        console.log(`click ${e.target.id}`);
-    }
+  
+    // function plotclick(e) {
+    //     console.log(`click ${e.target.id}`);
+    // }
     return(
         <div className="game-content">
             <h2>{userObject.username}'s Farm:</h2>

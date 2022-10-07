@@ -16,6 +16,23 @@ function App({setNewUser}) {
   useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject));
 }, [userObject]);
 
+
+//fetch for the farm data
+
+const [farmData, setFarmData] = useState({});
+
+const id = userObject.id
+
+useEffect(() =>  {  
+        fetch(`http://localhost:9292/farmers/${id}/farms`)
+          .then((response) => response.json())
+          .then(setFarmData) 
+    }, []);
+    
+    console.log(farmData)
+
+
+
   const [coinCount, setCoinCount] = useState(500)
   const [farmLevel, setFarmLevel] = useState(5)
   const [toolLevel, setToolLevel] = useState(1)
@@ -103,6 +120,7 @@ function App({setNewUser}) {
   }
 
 
+
   // Return
 
   return (
@@ -122,7 +140,6 @@ function App({setNewUser}) {
              <button onClick={()=>{setUserObject(null)}}>
              <h3>Log Out</h3>
            </button>
-      
            <Game userObject={userObject} setNewUser={setNewUser} plantPlant={plantPlant} 
            />
                 </div>

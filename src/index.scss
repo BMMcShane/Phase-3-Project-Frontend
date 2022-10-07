@@ -8,6 +8,7 @@ body{
   font-family: 'superhelio _regular', sans-serif;
   @apply h-full
 }
+
 h2{
   font-family: 'seriousr4b', sans-serif;
   line-height: 10px;
@@ -111,6 +112,7 @@ h2{
 
 
 .App{
+
   @apply text-center
 }
 
@@ -164,6 +166,7 @@ h2{
   flex-grow: 1;
 @apply inline-grid grid-cols-5 grid-rows-5 gap-9 justify-center w-11/12 mx-auto my-5
 }
+
 .locked-plot{
   /* height: 50px;
   width: 50px; */
@@ -186,7 +189,7 @@ h2{
 #right-column{
   display: flex;
   flex-flow: column;
-  @apply w-1/4 mx-2
+  @apply w-1/4 mx-1 
 }
 #coin-box {
   background-color: #717872;
@@ -264,4 +267,11 @@ h3{
   background-color: #717872;
   @include other( 3px, black, #717872 );
   @apply m-5 mb-10 w-72
+}
+
+#login-container button {
+padding: 5px;
+background-color: #717872;
+@include other( 3px, black, #717872 );
+@apply m-5 w-60 mt-10
 }
