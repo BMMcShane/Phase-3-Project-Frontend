@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Login";
 
-function Header({forceUpdate}) {
+function Header({userData, forceUpdate}) {
   const [newUser, setNewUser] = useState(false)
   const [isLogin, setIsLogin]  = useState(false)
   const [userObject, setUserObject] = useState(JSON.parse(localStorage.getItem("userObject")))
@@ -11,7 +11,7 @@ function Header({forceUpdate}) {
 
 let loginNode = null;
 if (newUser) {
-  loginNode=<Login forceUpdate={forceUpdate} isLogin={isLogin} setUserObject={setUserObject} setNewUser={setNewUser}/> 
+  loginNode=<Login forceUpdate={forceUpdate} isLogin={isLogin} setUserObject={setUserObject} userData={userData} setNewUser={setNewUser}/> 
 }
 
 return (

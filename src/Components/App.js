@@ -8,7 +8,7 @@ import Shop from "./Shop";
 import Coins from "./Coins";
 
 
-function App({setNewUser}) {
+function App({setNewUser, userData}) {
 
   const [ignored, forceUpdate] =useState(Math.random())
 
@@ -23,25 +23,37 @@ const [farmData, setFarmData] = useState({});
 
 const id = userObject.id
 
+const [coinCount, setCoinCount] = useState('')
+const [farmLevel, setFarmLevel] = useState('')
+const [toolLevel, setToolLevel] = useState('')
+
+
+let allFarmData ;
+
 useEffect(() =>  {  
         fetch(`http://localhost:9292/farmers/${id}/farms`)
           .then((response) => response.json())
-          .then(setFarmData) 
+          .then(setFarmData)
+          
+          // setFarmLevel(`${farmData.farm_upgrade_level}`)
+          // console.log(farmLevel)
     }, []);
     
-    console.log(farmData)
+  console.log(farmData)
+
+  // const initialFarmLevel = farmData.farmer_upgrade_level
+  //         setFarmLevel(initialFarmLevel)
+  // console.log(farmData.farmer_upgrade_level)
+  
+  // console.log(initialFarmLevel)
 
 
-
-  const [coinCount, setCoinCount] = useState(500)
-  const [farmLevel, setFarmLevel] = useState(5)
-  const [toolLevel, setToolLevel] = useState(1)
 
 
   // Multipurpose Purchase function:
 
   function handlePurchase(price) {
-    if (coinCount > price) {
+    if (coinCount >= price) {
       setCoinCount(coinCount - price);
     } else {
       console.log("Not Enough Coins");
@@ -53,6 +65,7 @@ useEffect(() =>  {
     if (toolLevel < 10 && price <= coinCount) {
       setToolLevel(toolLevel +1);
       handlePurchase(price);
+      //call function to patch the data on backend 
     } else {
       console.log("Error")
     };
@@ -133,14 +146,14 @@ useEffect(() =>  {
 {/* create some sort of ternery to switch between login and game rendering? */}
     <div id="game-column">
              {userObject===null?
-             <Header forceUpdate={forceUpdate} userObject={userObject} setUserObject={setUserObject}/>
+             <Header forceUpdate={forceUpdate} userObject={userObject} userData={userData} setUserObject={setUserObject}/>
              :  
              <div>
               <div>
              <button onClick={()=>{setUserObject(null)}}>
              <h3>Log Out</h3>
            </button>
-           <Game userObject={userObject} setNewUser={setNewUser} plantPlant={plantPlant} 
+           <Game userData={userData} userObject={userObject} setNewUser={setNewUser} plantPlant={plantPlant} 
            />
                 </div>
             </div>}
@@ -150,7 +163,7 @@ useEffect(() =>  {
 
       <div id="right-column">
         <br/>
-        <Coins coinCount={coinCount} farmLevel={farmLevel} toolLevel={toolLevel}/>
+        <Coins userData={userData} coinCount={coinCount} farmLevel={farmLevel} toolLevel={toolLevel}/>
         <br/>
         <Shop handlePurchase={handlePurchase} upgradeFarmLevel={upgradeFarmLevel} upgradeTools={upgradeTools} />
         <br/>

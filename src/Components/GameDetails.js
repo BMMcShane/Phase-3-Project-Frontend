@@ -3,9 +3,16 @@ import empty from "../Assets/farmin/Empty Plot.png"
 
 function GameDetails({plantPlant, userObject}) {
 
+    
+   
+    
+//   const [response, setResponse] = useState({});
+    
 
 const [userData, setUserData] = useState({});
 
+    
+console.log(userObject.id)
 const id = userObject.id
 
 useEffect(() =>  {  
@@ -14,7 +21,9 @@ useEffect(() =>  {
           .then(setUserData) 
     }, []);
     
-    console.log(userData)
+    // console.log(userData.props)
+    // console.log(userData)
+    console.log(userData.coins)
 
   
     // function plotclick(e) {

@@ -41,8 +41,7 @@ function LogIn({forceUpdate, isLogin, setUserObject, setNewUser}) {
     })
   }
 
-  
-      
+
   
     
       // setCookie("x-access-token", data["x-access-token"]);

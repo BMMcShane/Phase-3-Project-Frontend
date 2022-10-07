@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 
-function Coins({ coinCount, farmLevel, toolLevel, userObject}){
+function Coins({ userData, coinCount, farmLevel, toolLevel, userObject}){
 
-
+    // console.log(userData.coins)
+    
     return (
         <div id="coin-box">
             <h2>Wallet</h2>
