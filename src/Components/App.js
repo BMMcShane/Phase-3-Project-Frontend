@@ -21,7 +21,7 @@ function App({setNewUser, userData}) {
 
 // const [farmData, setFarmData] = useState({});
 
-// const id = userObject.id
+const id = userObject.id
 
 // useEffect(() =>  {  
 //         fetch(`http://localhost:9292/farmers/${id}/farms`)
@@ -39,9 +39,6 @@ function App({setNewUser, userData}) {
   const [coinCount, setCoinCount] = useState('')
   const [farmLevel, setFarmLevel] = useState('')
   const [toolLevel, setToolLevel] = useState('')
-
- 
-
 
 
   // Multipurpose Purchase function:
@@ -96,7 +93,6 @@ function App({setNewUser, userData}) {
     if (goal.className === 'locked-plot'){
       goal.className = 'unlocked-plot';
     }
-
   }
 
  // Mascot clicker function
@@ -107,25 +103,54 @@ function App({setNewUser, userData}) {
 
   // Plant a plant functions
 
+  //hard coding plant ids because they are constants
+  // useEffect(() =>  {  
+  //       fetch(`http://localhost:9292/plants/${id}`)
+  //         .then((response) => response.json())
+  //         .then(setPlantData) 
+  //   }, []);
+    
+  //   console.log(plantData)
+
+
   function plantPlant(plotNo) {
     let plot = document.getElementById(`${plotNo}`);
     let plant = document.getElementById(`hidden-dev-name`).textContent;
     let index = document.getElementById(`hidden-index`).textContent;
     let price = document.getElementById('hidden-price').textContent;
 
+    const plot_location = plot
+    const plant_id = 1
+
     if (price <= coinCount) {
       handlePurchase(price);
       plot.src = `../Assets/farmin/${plant}/01.gif`;
-      savePlant(index);
+      // savePlant(index);
+
+        fetch(`http://localhost:9292/farmers/${id}/add_plant/${plant_id}/${plot_location}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+          plantPlant(plot_location)
+    
+        })
+
+      //add the id of the plant and log the time plant is planted
     } else {
       console.log("Error");
     };
+
+    
   }
 
-  function savePlant(index) {
-    console.log('ha');
-  }
-
+  // function savePlant(index) {
+  //   console.log('ha');
+  // }
+  
 
 
   // Return

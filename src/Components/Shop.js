@@ -1,6 +1,6 @@
 import React from "react";
 
-function Shop({handlePurchase, upgradeFarmLevel, upgradeTools}) {
+function Shop({ handlePurchase, upgradeFarmLevel, upgradeTools}) {
 
     // function shopclick(e){
     //     console.log(`${e.target.value}`)
