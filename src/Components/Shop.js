@@ -6,6 +6,8 @@ function Shop({ handlePurchase, upgradeFarmLevel, upgradeTools}) {
     //     console.log(`${e.target.value}`)
     // }
 
+    
+
     return (
         <div id="shop-box">
             <h2>Shoppe</h2>

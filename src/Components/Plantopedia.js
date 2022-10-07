@@ -44,7 +44,7 @@ function Plantopedia(){
             </div>
             <div id="plant-column-two">
                 <p id="displayed-plant-name"> Name: "Grass"</p>
-                <p id="displayed-plant-price"> Costs ¢ 0</p>
+                <p id="displayed-plant-price"> Costs: $ 0</p>
                 <p id="displayed-plant-description"> Touch Grass</p>
                 <p id="hidden-index" hidden={true}>1</p>
                 <p id="hidden-dev-name" hidden={true}>grass</p>

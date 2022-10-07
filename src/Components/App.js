@@ -134,7 +134,6 @@ function App({setNewUser, userData}) {
           plantPlant(plot)
     
         })
-
       //add the id of the plant and log the time plant is planted
     } else {
       console.log("Error");
