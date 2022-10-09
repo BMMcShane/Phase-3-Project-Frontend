@@ -36,18 +36,18 @@ function GameDetails({ userObject, upgradePlantLevel}) {
 const [userData, setUserData] = useState({});
 
     
-console.log(userObject.id)
-const id = userObject.id
+// console.log(userObject.id)
+// const id = userObject.id
 
-useEffect(() =>  {  
-        fetch(`http://localhost:9292/farmers/${id}`)
-          .then((response) => response.json())
-          .then(setUserData) 
-    }, []);
+// useEffect(() =>  {  
+//         fetch(`http://localhost:9292/farmers/${id}`)
+//           .then((response) => response.json())
+//           .then(setUserData) 
+//     }, []);
     
-    // console.log(userData.props)
-    // console.log(userData)
-    console.log(userData.coins)
+//     // console.log(userData.props)
+//     // console.log(userData)
+//     console.log(userData.coins)
 
   
     // function plotclick(e) {

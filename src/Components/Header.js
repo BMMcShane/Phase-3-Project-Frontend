@@ -9,10 +9,22 @@ function Header({userData, forceUpdate}) {
 }, [userObject]);
   
 
+
+
+const [coinCount, setCoinCount] = useState(JSON.parse(localStorage.getItem("coinCount")))
+useEffect(() =>  { 
+  fetch(`http://localhost:9292/farmers/${userObject.id}/coins`)
+    .then((resp) => resp.json())
+    .then(setCoinCount)
+}, [coinCount]);
+
+    
+
 let loginNode = null;
 if (newUser) {
-  loginNode=<Login forceUpdate={forceUpdate} isLogin={isLogin} setUserObject={setUserObject} userData={userData} setNewUser={setNewUser}/> 
+  loginNode=<Login  setCoinCount={setCoinCount} forceUpdate={forceUpdate} isLogin={isLogin} setUserObject={setUserObject} userData={userData} setNewUser={setNewUser}/> 
 }
+
 
 return (
   <div id="login-container">

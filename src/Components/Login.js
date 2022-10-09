@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function LogIn({forceUpdate, isLogin, setUserObject, setNewUser}) {
+function LogIn({forceUpdate, isLogin, setUserObject, setNewUser, setCoinCount}) {
   const [formData, setFormData] = useState({
     username: '',
   });
@@ -37,12 +37,12 @@ function LogIn({forceUpdate, isLogin, setUserObject, setNewUser}) {
         setUserObject({id: data.farmer_id, coins: data.coins, username: formData.username, session_cookie: data["session_cookie"]})
         setNewUser(false)
         forceUpdate(Math.random())
+        setCoinCount()
       }
     })
   }
 
 
-  
     
       // setCookie("x-access-token", data["x-access-token"]);
       // setSavedCookie({ cookie: data["x-access-token"] });

@@ -15,17 +15,52 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
   //Set State Functions
   const [selectedPlant, setSelectedPlant] = useState('');
   const [ignored, forceUpdate] =useState(Math.random())
-  const [coinCount, setCoinCount] = useState('15000')
   const [farmLevel, setFarmLevel] = useState(0)
   const [toolLevel, setToolLevel] = useState(0)
   const [plantIndex, setPlantIndex] = useState(0)
+  const [ isDestroyed, setIsDestroyed] = useState(false);
+  // const [farmerData, setFarmerData] = useState({})
 
   
   
-  
   const [userObject, setUserObject] = useState(JSON.parse(localStorage.getItem("userObject")))
-  useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject));
+  useEffect(() => { localStorage.setItem("userObject", JSON.stringify(userObject))
 }, [userObject]);
+
+// const [coinCount, setCoinCount] =useState('')
+
+
+
+
+const [coinCount, setCoinCount] = useState(JSON.parse(localStorage.getItem("coinCount")))
+useEffect(() =>  { 
+  fetch(`http://localhost:9292/farmers/${userObject.id}/coins`)
+    .then((resp) => resp.json())
+    .then(coinCount)
+    .then(localStorage.setItem ("coinCount", JSON.stringify(coinCount)))
+}, [coinCount]);
+
+    
+console.log(coinCount)
+
+
+  //updating coins
+  function handleCoins() {
+    fetch(`http://localhost:9292/farmers/${userObject.id}/coins`, {
+      method: 'PATCH'
+    })
+      .then((resp) => resp.json())
+      .then(() => {
+        setCoinCount();
+      })
+  }
+
+
+
+          // .then(setFarmLevel(farmData.farm_upgrade_level))
+          // .then(statSetter(farmData))
+
+
 
   // const id = userObject.id
 
@@ -66,6 +101,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
   function handlePurchase(price) {
     if (coinCount > price) {
       setCoinCount(coinCount - price);
+      handleCoins()
       // postAccount();
     } else {
       console.log("Not Enough Coins");
@@ -78,6 +114,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
     if (toolLevel < 10 && price <= coinCount) {
       setToolLevel(toolLevel +1);
       handlePurchase(price);
+      handleCoins()
       //call function to patch the data on backend 
     } else {
       console.log("Error")
@@ -91,6 +128,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
       setFarmLevel(farmLevel + 1);
       handlePurchase(price);
       plotUnlockChecker();
+      handleCoins()
     } else {
       console.log("Error")
     };
@@ -125,6 +163,7 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
 
   function clicker() {
     setCoinCount(coinCount + 1);
+    handleCoins()
   };
 
   // Timer Function
@@ -204,8 +243,21 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
 
 
   console.log(selectedPlant)
-  // Return
 
+  //deleting an account
+  function handleDeleteAccount() {
+    fetch(`http://localhost:9292/farmers/${userObject.id}/delete`, {
+      method: 'DELETE'
+    })
+      .then((resp) => resp.json())
+      .then(() => {
+        setIsDestroyed(true);
+        setUserObject(null)
+      })
+  }
+
+
+  // Return
   return (
     <div className="App" >
       <div id="column-table">
@@ -219,16 +271,22 @@ function App({setNewUser, userData, plantClick, hiddenIndex}) {
         <Tutorial />
       </div>
 {/* create some sort of ternery to switch between login and game rendering? */}
-    <div id="game-column">
+    <div >
              {userObject===null?
-             <Header forceUpdate={forceUpdate} userObject={userObject} setUserObject={setUserObject}/>
+             <Header setCoinCount={setCoinCount} forceUpdate={forceUpdate} userObject={userObject} setUserObject={setUserObject}/>
              :  
-             <div>
-              <div id="input-button">
+        
+              <div id="game-container">
                 <br />
-             <button onClick={()=>{setUserObject(null)}}>
-             <p>Delete Farm 🥺</p>
+             <button id="user-button" onClick={()=>{setUserObject(null)}}>
+             <h2>Log Out</h2>
            </button>
+
+           <button id="user-button" onClick={handleDeleteAccount}>
+             <h2>Delete Farm</h2>
+           </button>
+           <div>
+
            <Game 
            upgradePlantLevel={upgradePlantLevel}
            userData={userData} 
